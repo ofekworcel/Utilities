@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `coupon_project` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `coupon_project`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: coupon_project
@@ -28,9 +30,7 @@ CREATE TABLE `company` (
   `PASSWORD` varchar(45) NOT NULL,
   `EMAIL` varchar(45) NOT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `COMP_NAME_UNIQUE` (`COMP_NAME`),
-  UNIQUE KEY `ID_UNIQUE` (`ID`),
-  UNIQUE KEY `EMAIL_UNIQUE` (`EMAIL`)
+  UNIQUE KEY `ID_UNIQUE` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -40,7 +40,7 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
-INSERT INTO `company` VALUES (0,'Worcel','1234','worcel@worcel.com'),(1,'Ofek&Co','1234','Ofek@Co.com');
+INSERT INTO `company` VALUES (0,'Worcel','1234','worcel@worcel.com');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +55,6 @@ CREATE TABLE `company_coupon` (
   `COMP_ID` bigint(100) NOT NULL,
   `COUPON_ID` bigint(100) NOT NULL,
   PRIMARY KEY (`COMP_ID`,`COUPON_ID`),
-  UNIQUE KEY `COMP_ID_UNIQUE` (`COMP_ID`),
   UNIQUE KEY `COUPON_ID_UNIQUE` (`COUPON_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -87,8 +86,7 @@ CREATE TABLE `coupon` (
   `PRICE` double NOT NULL,
   `IMAGE` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `ID_UNIQUE` (`ID`),
-  UNIQUE KEY `TITLE_UNIQUE` (`TITLE`)
+  UNIQUE KEY `ID_UNIQUE` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -98,7 +96,6 @@ CREATE TABLE `coupon` (
 
 LOCK TABLES `coupon` WRITE;
 /*!40000 ALTER TABLE `coupon` DISABLE KEYS */;
-INSERT INTO `coupon` VALUES (0,'test coup','2018-02-12','2018-02-12',20,'TRAVELLING','Test message',1212,'');
 /*!40000 ALTER TABLE `coupon` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +121,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Ofek','abc123'),(2,'Ofek','abc123'),(3,'Ofek','abc123'),(4,'Roi','abc123'),(5,'Tomer','abc123');
+INSERT INTO `customer` VALUES (2,'Ofek','abc123'),(3,'Ofek','abc123'),(4,'Roi','abc123'),(5,'Tomer','abc123');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +136,6 @@ CREATE TABLE `customer_coupon` (
   `CUST_ID` bigint(100) NOT NULL,
   `COUPON_ID` bigint(100) NOT NULL,
   PRIMARY KEY (`CUST_ID`,`COUPON_ID`),
-  UNIQUE KEY `CUST_ID_UNIQUE` (`CUST_ID`),
   UNIQUE KEY `COUPON_ID_UNIQUE` (`COUPON_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -162,4 +158,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-17 23:43:53
+-- Dump completed on 2018-05-30 10:23:20
